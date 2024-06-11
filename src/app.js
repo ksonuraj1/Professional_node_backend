@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import userRouter from './routes/user.routes.js';
 export const app = express();
+
 app.use(
   cors({
     origin: process.env.ALLLOWED_OROGIN,
