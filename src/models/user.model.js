@@ -1,7 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
-import jsonwebtoken from 'jsonwebtoken';
-const jwt = jsonwebtoken();
+import jwt from 'jsonwebtoken';
 
 const userSchema = new Schema(
   {
@@ -9,7 +8,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      lowerCae: true,
+      lowerCase: true,
       trim: true,
       index: true,
     },
@@ -17,7 +16,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      lowerCae: true,
+      lowerCase: true,
       trim: true,
     },
     fullname: {
@@ -27,11 +26,11 @@ const userSchema = new Schema(
       index: true,
     },
     avatar: {
-      type: String,
+      type: String, //cloudinary
       required: true,
     },
     coverImage: {
-      type: String,
+      type: String, // cloudinary
     },
     watchHistory: [
       {
@@ -57,7 +56,7 @@ userSchema.pre('save', async function (next) {
 });
 
 userSchema.methods.isPasswordCorrect = async function (password) {
-  await bcrypt.compare(password, this.password);
+  return await bcrypt.compare(password, this.password);
 };
 
 userSchema.methods.generateAccessToken = function () {
@@ -78,9 +77,6 @@ userSchema.methods.generateRefreshToken = function () {
   return jwt.sign(
     {
       _id: this.id,
-      email: this.email,
-      username: this.username,
-      fullname: this.fullname,
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
