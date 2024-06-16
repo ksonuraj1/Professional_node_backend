@@ -1,0 +1,23 @@
+1. HTTP Headers
+-> meta data - key-value pair sent along with request and response
+-Request headers - from client
+-Response headers - from server
+-Representation Headers - encoding/Compression
+-payload Headers - data
+
+HTTP Methods -
+GET - retrive and resource
+HEAD - NO message body (response headers only)
+OPTIONS - Available operation
+TRACE - Loopback test used fro debuging
+DELETE - REMOVE resource
+PUT - replace resource
+POST - interact with resource
+Patch - change part of resource
+
+HTTP STATUS CODE -
+> 1xx - informational
+> 2xx - success - 200- ok , 202-accepted ,201- created
+> 3xx - redirection - 307 - temporary redirect, 308- permanent redirect
+> 4xx - client error - 401- unauthorized , 400 bad Request
+> 5xx - server errors - 500- internal server errors, 504 gatway time out
